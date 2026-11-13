@@ -1,0 +1,156 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Roboto', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-heading: 'Encode Sans Condensed', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    --color-eco-green: #00A86B;
+    --color-eco-green-hover: #008A57;
+    --color-eco-green-dark: #045D3B;
+    --color-eco-forest: #0E2923;
+    --color-eco-blue: #007BFF;
+    --color-eco-blue-dark: #0056B3;
+    --color-eco-navy: #0B2545;
+    --color-eco-mint: #C8E6C9;
+    --color-eco-mint-soft: #EAF6EE;
+    --color-eco-surface: #F4F6F3;
+    --color-eco-charcoal: #333333;
+    --color-eco-heading: #16241F;
+    --color-eco-body: #4A5552;
+    --color-eco-border: #DCE4DF;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+        font-family: var(--font-sans);
+        color: var(--color-eco-charcoal);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: var(--font-heading);
+        color: var(--color-eco-heading);
+        letter-spacing: -0.015em;
+    }
+}
+
+@keyframes spinSlow {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes floatSubtle {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+.animate-spin-slow {
+    animation: spinSlow 22s linear infinite;
+}
+
+.animate-float-subtle {
+    animation: floatSubtle 5s ease-in-out infinite;
+}
+
+/* Ecozone-inspired interactive button styles adapted to Ecowattage branding */
+.btn-eco-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    background-color: var(--color-eco-green);
+    color: #ffffff;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.875rem 1.75rem;
+    border-radius: 9999px;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 20px -6px rgba(0, 168, 107, 0.45);
+}
+
+.btn-eco-primary:hover {
+    background-color: var(--color-eco-forest);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px -6px rgba(14, 41, 35, 0.35);
+}
+
+.btn-eco-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    background-color: var(--color-eco-blue);
+    color: #ffffff;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.875rem 1.75rem;
+    border-radius: 9999px;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 20px -6px rgba(0, 123, 255, 0.4);
+}
+
+.btn-eco-secondary:hover {
+    background-color: var(--color-eco-navy);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.btn-eco-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    background-color: transparent;
+    color: var(--color-eco-heading);
+    border: 1.5px solid var(--color-eco-green);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.85rem 1.75rem;
+    border-radius: 9999px;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-eco-outline:hover {
+    background-color: var(--color-eco-green);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.btn-eco-white {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    background-color: #ffffff;
+    color: var(--color-eco-forest);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.875rem 1.75rem;
+    border-radius: 9999px;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+}
+
+.btn-eco-white:hover {
+    background-color: var(--color-eco-mint);
+    color: var(--color-eco-forest);
+    transform: translateY(-2px);
+}
