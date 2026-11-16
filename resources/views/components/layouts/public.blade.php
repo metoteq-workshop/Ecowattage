@@ -3,7 +3,15 @@
     'metaDescription' => 'Ecowattage is a renewable energy company focused on advocacy, public education, innovation, and the future manufacturing of renewable energy products across Africa.',
     'site' => [],
     'navigation' => [],
+    'cmsPage' => null,
 ])
+@php
+    $resolvedCmsPage = $cmsPage ?? \App\Support\CmsContentService::currentRoutePage();
+    $effectiveTitle = $resolvedCmsPage?->meta_title ?: $title;
+    $effectiveDescription = $resolvedCmsPage?->meta_description ?: $metaDescription;
+    $effectiveRobots = $resolvedCmsPage?->robots ?: 'index, follow';
+    $effectiveOgImage = $resolvedCmsPage?->og_image ? asset($resolvedCmsPage->og_image) : asset('images/ecowattage-official-logo.png');
+@endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth">
 <head>
@@ -11,16 +19,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ $title }}</title>
-    <meta name="description" content="{{ $metaDescription }}">
-    <meta name="robots" content="index, follow">
+    <title>{{ $effectiveTitle }}</title>
+    <meta name="description" content="{{ $effectiveDescription }}">
+    <meta name="robots" content="{{ $effectiveRobots }}">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="{{ $title }}">
-    <meta property="og:description" content="{{ $metaDescription }}">
+    <meta property="og:title" content="{{ $effectiveTitle }}">
+    <meta property="og:description" content="{{ $effectiveDescription }}">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Ecowattage">
-    <meta property="og:image" content="{{ asset('images/ecowattage-official-logo.png') }}">
+    <meta property="og:image" content="{{ $effectiveOgImage }}">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ asset('images/ecowattage-emblem.png') }}">
@@ -52,6 +60,17 @@
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-eco-green focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg">
         Skip to main content
     </a>
+
+    @if ($resolvedCmsPage && ! $resolvedCmsPage->isPubliclyAccessible())
+        <div class="bg-amber-500 text-eco-forest px-4 py-2.5 text-xs font-heading font-bold flex items-center justify-between gap-4 z-50">
+            <span>
+                CMS Preview Mode — This page ({{ $resolvedCmsPage->title }}) is currently hidden or in draft status and is not visible to public visitors.
+            </span>
+            <a href="{{ route('admin.pages.index') }}" class="px-3 py-1 rounded-full bg-eco-forest text-white hover:bg-eco-green transition">
+                Return to CMS Pages
+            </a>
+        </div>
+    @endif
 
     <!-- Shared Sticky Header Navigation (includes Top Header Bar & Main Menu Header) -->
     <x-public.header :site="$site" :navigation="$navigation" />

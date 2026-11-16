@@ -28,9 +28,15 @@ class HomePageTest extends TestCase
         $response->assertSee('Illustrative Photography');
     }
 
-    public function test_pending_stage_one_routes_render_clean_queue_page(): void
+    public function test_all_stage_one_primary_routes_render_completed_pages(): void
     {
         $routes = [
+            'home',
+            'about',
+            'services',
+            'campaigns',
+            'projects',
+            'blog',
             'publications',
             'events-gallery',
             'partners-careers',
@@ -40,7 +46,7 @@ class HomePageTest extends TestCase
         foreach ($routes as $routeName) {
             $response = $this->get(route($routeName));
             $response->assertOk();
-            $response->assertSee('Stage 1 Page-by-Page Build Queue');
+            $response->assertDontSee('Stage 1 Page-by-Page Build Queue');
         }
     }
 

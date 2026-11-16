@@ -64,7 +64,7 @@ class StageOneData
             [
                 'label' => 'Initiatives',
                 'route' => 'campaigns',
-                'built' => false,
+                'built' => true,
                 'children' => [
                     [
                         'label' => 'Advocacy Campaigns',
@@ -83,7 +83,7 @@ class StageOneData
             [
                 'label' => 'Resources',
                 'route' => 'blog',
-                'built' => false,
+                'built' => true,
                 'children' => [
                     [
                         'label' => 'Blog & News',
@@ -95,25 +95,25 @@ class StageOneData
                         'label' => 'Publications & Research',
                         'route' => 'publications',
                         'description' => 'Policy briefs, white papers & educational toolkits',
-                        'built' => false,
+                        'built' => true,
                     ],
                     [
                         'label' => 'Events & Media Gallery',
                         'route' => 'events-gallery',
                         'description' => 'Workshops, conferences, photo & video documentation',
-                        'built' => false,
+                        'built' => true,
                     ],
                 ],
             ],
             [
                 'label' => 'Partners & Careers',
                 'route' => 'partners-careers',
-                'built' => false,
+                'built' => true,
             ],
             [
                 'label' => 'Contact',
                 'route' => 'contact',
-                'built' => false,
+                'built' => true,
             ],
         ];
     }
@@ -1228,6 +1228,614 @@ class StageOneData
                         'Site-specific resource data avoids assumptions imported from other climates.',
                         'Salt-mist corrosion protection is essential for coastal clean-tech hardware.',
                     ],
+                ],
+            ],
+        ];
+    }
+
+    /**
+     * Data specifically for the Publications & Research (/publications) Knowledge Centre page.
+     *
+     * @return array<string, mixed>
+     */
+    public static function publicationsPageData(): array
+    {
+        return [
+            'header' => [
+                'subtitle' => 'Publications & Research Centre',
+                'title' => 'Evidence-Based Policy Briefs, Technical Papers & Learning Toolkits',
+                'description' => 'Explore Ecowattage’s structured Knowledge Centre repository designed to house downloadable white papers, curriculum guides, and renewable energy feasibility studies across West Africa.',
+                'disclaimer' => 'Publication Repository Notice: All document cards below represent CMS-ready research templates. Verified PDF downloads, publication dates, and co-author institutional credits will be uploaded directly via the Stage 2 Document Manager.',
+            ],
+
+            'types' => [
+                'All',
+                'Policy Brief',
+                'Technical White Paper',
+                'Educational Toolkit',
+                'Feasibility Study',
+            ],
+
+            'featured_report' => [
+                'badge' => 'Featured Policy & Technical Framework',
+                'type' => 'Policy Brief',
+                'title' => 'Advancing Energy Literacy & Domestic Clean-Tech Readiness in Sierra Leone',
+                'subtitle' => 'Executive Scope & Institutional Purpose',
+                'authors' => 'Ecowattage Research & Policy Desk',
+                'status' => 'Draft Framework / CMS Upload Pending',
+                'format_note' => '[PDF Attachment Slot — Stage 2 Media Manager]',
+                'image' => '/images/illustrative/publications-research-desk.jpg',
+                'summary' => 'A foundational roadmap outlining how vocational energy education, transparent component quality benchmarks, and targeted import duty reforms can accelerate trustworthy solar adoption and lay the groundwork for local clean-tech assembly.',
+                'methodology_points' => [
+                    [
+                        'title' => 'Community & School Literacy Baselines',
+                        'desc' => 'Evaluating practical solar maintenance knowledge gaps across secondary schools and peri-urban youth cohorts.',
+                    ],
+                    [
+                        'title' => 'Hardware Quality & Tariff Alignment',
+                        'desc' => 'Examining customs classifications and durability standards for inverters, LiFePO4 batteries, and surge-tolerant LEDs.',
+                    ],
+                    [
+                        'title' => 'Rural Clinic & Cold-Chain Prioritization',
+                        'desc' => 'Standardizing critical-load isolation practices to protect vaccine storage and maternal care units.',
+                    ],
+                    [
+                        'title' => 'Domestic Assembly Feasibility',
+                        'desc' => 'Identifying modular clean-tech components suitable for phased in-country testing and assembly.',
+                    ],
+                ],
+            ],
+
+            'publications_list' => [
+                [
+                    'id' => 'tariff-quality-policy-brief',
+                    'title' => 'Clean-Tech Import Tariffs & Component Quality Standards in West Africa',
+                    'type' => 'Policy Brief',
+                    'topic' => 'Regulatory Policy & Trade',
+                    'audience' => 'Ministries, Regulators & Customs Desks',
+                    'status' => 'CMS Template Ready',
+                    'file_status' => '[PDF Pending Upload]',
+                    'image' => '/images/illustrative/blog-energy-forum.jpg',
+                    'abstract' => 'Examines how streamlined tariff schedules paired with verifiable laboratory benchmarks protect end-users from substandard solar products while supporting legitimate domestic distributors and assemblers.',
+                    'key_findings' => [
+                        'Clear HS-code guidance eliminates unpredictable port clearance delays for lithium storage and inverters.',
+                        'Minimum warranty and efficiency labeling builds public trust in decentralized solar hardware.',
+                        'Graduated component incentives encourage local testing and assembly capabilities.',
+                    ],
+                ],
+                [
+                    'id' => 'rural-clinic-sizing-whitepaper',
+                    'title' => 'Solar-Plus-Storage Sizing Guide for Rural Primary Healthcare Clinics',
+                    'type' => 'Technical White Paper',
+                    'topic' => 'Healthcare Electrification',
+                    'audience' => 'Health Planners & Solar Engineers',
+                    'status' => 'CMS Template Ready',
+                    'file_status' => '[PDF Pending Upload]',
+                    'image' => '/images/illustrative/campaign-clinic-solar.jpg',
+                    'abstract' => 'Provides a structured load-profiling framework separating essential cold-chain and maternity lighting circuits from non-critical clinic loads to ensure 24/7 uptime without oversizing battery banks.',
+                    'key_findings' => [
+                        'Load segregation prevents non-essential appliances from draining medical refrigeration reserves.',
+                        'LiFePO4 thermal safety margins are suited to tropical West African clinic environments.',
+                        'Routine caretaker inspection checklists lower unplanned downtime.',
+                    ],
+                ],
+                [
+                    'id' => 'school-solar-literacy-toolkit',
+                    'title' => 'Hands-On Renewable Energy Literacy Curriculum & Workshop Toolkit',
+                    'type' => 'Educational Toolkit',
+                    'topic' => 'STEM & Community Education',
+                    'audience' => 'Secondary Teachers & Youth Facilitators',
+                    'status' => 'CMS Template Ready',
+                    'file_status' => '[Toolkit Pack Pending]',
+                    'image' => '/images/illustrative/hero-energy-education.jpg',
+                    'abstract' => 'Modular lesson outlines, safe multimeter lab exercises, and solar orientation diagrams designed to help secondary schools and community groups teach practical clean-energy fundamentals.',
+                    'key_findings' => [
+                        'Visual diagrams simplify voltage, current, shading, and battery state-of-charge concepts.',
+                        'Interactive safety modules cover DC isolation and surge protection fundamentals.',
+                        'Designed for low-resource classrooms using portable solar demonstration kits.',
+                    ],
+                ],
+                [
+                    'id' => 'led-benchmarking-protocol',
+                    'title' => 'High-Efficiency LED Luminaires & Voltage-Surge Resilience Study',
+                    'type' => 'Technical White Paper',
+                    'topic' => 'Clean-Tech Innovation & R&D',
+                    'audience' => 'Product Engineers & Municipal Buyers',
+                    'status' => 'CMS Template Ready',
+                    'file_status' => '[PDF Pending Upload]',
+                    'image' => '/images/illustrative/campaign-innovation-lab.jpg',
+                    'abstract' => 'Documents laboratory testing criteria for driver efficiency, thermal dissipation, and surge tolerance—helping institutions transition away from fragile, short-lived lighting stock.',
+                    'key_findings' => [
+                        'Wide-range voltage drivers withstand rural grid fluctuations far better than standard bulbs.',
+                        'Repairable modular housing extends fixture service life and reduces electronic waste.',
+                        'Retrofitting high-draw lighting frees capacity on existing community microgrids.',
+                    ],
+                ],
+                [
+                    'id' => 'micro-hydro-watershed-study',
+                    'title' => 'Run-of-River Micro-Hydro & Upstream Watershed Assessment Framework',
+                    'type' => 'Feasibility Study',
+                    'topic' => 'Hydro & Hybrid Generation',
+                    'audience' => 'Local Councils & Rural Development Partners',
+                    'status' => 'CMS Template Ready',
+                    'file_status' => '[Study Brief Pending]',
+                    'image' => '/images/illustrative/project-micro-hydro.jpg',
+                    'abstract' => 'Outlines seasonal stream-flow logging protocols, intake civil-works considerations, and complementary forest-cover conservation measures required before commissioning community hydro sites.',
+                    'key_findings' => [
+                        'Dry-season flow measurements are essential before selecting turbine capacities.',
+                        'Community reforestation around catchment streams stabilizes multi-year hydro output.',
+                        'Pairing wet-season hydro with solar PV smooths annual energy availability.',
+                    ],
+                ],
+                [
+                    'id' => 'coastal-wind-solar-study',
+                    'title' => 'Coastal Hybrid Wind & Solar Irradiance Mapping Methodology',
+                    'type' => 'Feasibility Study',
+                    'topic' => 'Hybrid Resource Assessment',
+                    'audience' => 'Universities & Technical Researchers',
+                    'status' => 'CMS Template Ready',
+                    'file_status' => '[Dataset Pending]',
+                    'image' => '/images/illustrative/project-wind-solar-hybrid.jpg',
+                    'abstract' => 'Establishes transparent sensor calibration, salt-mist hardware protection, and diurnal data-logging methods for evaluating wind-solar complementarity along West African coastal corridors.',
+                    'key_findings' => [
+                        'Late-afternoon sea breezes often coincide with early-evening household peak loads.',
+                        'Marine-grade enclosures are critical for coastal inverter and telemetry survival.',
+                        'Open empirical datasets reduce design uncertainty for future coastal pilots.',
+                    ],
+                ],
+            ],
+
+            'research_pillars' => [
+                [
+                    'number' => '01',
+                    'title' => 'Field-Verified Baselines',
+                    'desc' => 'Every study emphasizes real African environmental conditions—seasonal rainfall, coastal humidity, dust, and local grid voltage behavior.',
+                ],
+                [
+                    'number' => '02',
+                    'title' => 'Open Educational Access',
+                    'desc' => 'Curriculum kits and technical explainers are written to be shared freely with schools, apprentices, and community caretakers.',
+                ],
+                [
+                    'number' => '03',
+                    'title' => 'Policy-Ready Clarity',
+                    'desc' => 'We translate complex engineering trade-offs into concise, actionable recommendations for regulators, ministries, and institutional donors.',
+                ],
+            ],
+        ];
+    }
+
+    /**
+     * Data specifically for Page 8: Events & Media Gallery (/events-gallery).
+     *
+     * @return array<string, mixed>
+     */
+    public static function eventsGalleryPageData(): array
+    {
+        return [
+            'header' => [
+                'subtitle' => 'Events, Workshops & Documentation',
+                'title' => 'Clean Energy Dialogues, Field Trainings & Documentary Media',
+                'description' => 'Follow Ecowattage’s planned public workshops, academic energy symposiums, and community demonstration programs, alongside our structured photo and video documentation gallery.',
+                'disclaimer' => 'Events & Media Notice: Scheduled dates, host venues, and gallery visuals below represent structured Stage 1 templates using illustrative documentary photography. Confirmed event calendars, registration forms, and official media uploads will be managed via Stage 2 CMS.',
+            ],
+
+            'event_categories' => [
+                'All',
+                'Workshops & Training',
+                'Policy Symposiums',
+                'Community Outreach',
+                'Technical Seminars',
+            ],
+
+            'events_list' => [
+                [
+                    'id' => 'freetown-clean-energy-symposium',
+                    'title' => 'Sierra Leone Clean Energy Policy & Local Assembly Dialogue',
+                    'category' => 'Policy Symposiums',
+                    'schedule' => '[Schedule Date & Venue: Confirm via CMS]',
+                    'format' => 'In-Person Symposium & Roundtable',
+                    'location' => 'Freetown [Host Venue Pending]',
+                    'image' => '/images/illustrative/events-energy-conference.jpg',
+                    'summary' => 'Convening energy regulators, university researchers, and solar practitioners to examine import duty clarity, component durability benchmarks, and pathways toward domestic clean-tech assembly.',
+                    'highlights' => [
+                        'Keynote policy roundtable on fair clean-tech customs frameworks.',
+                        'Technical panel on lithium battery and surge-protected LED quality benchmarks.',
+                        'Interactive Q&A with engineering students and municipal planners.',
+                    ],
+                ],
+                [
+                    'id' => 'community-solar-demo-day',
+                    'title' => 'Hands-On Community Solar & Microgrid Orientation Workshop',
+                    'category' => 'Workshops & Training',
+                    'schedule' => '[Schedule Date & Venue: Confirm via CMS]',
+                    'format' => 'Outdoor Field Demonstration',
+                    'location' => 'Community Training Hub [Supply Location]',
+                    'image' => '/images/illustrative/events-solar-field-demo.jpg',
+                    'summary' => 'Practical live demonstration introducing safe solar PV wiring, charge controller diagnostics, load prioritization, and battery care for community technicians and youth apprentices.',
+                    'highlights' => [
+                        'Live portable solar PV & inverter setup walkthrough.',
+                        'Safety checklist training for DC isolation and surge protection.',
+                        'Guided Q&A for household solar caretakers and clinic staff.',
+                    ],
+                ],
+                [
+                    'id' => 'secondary-school-energy-literacy-week',
+                    'title' => 'Secondary School Clean Energy Literacy & STEM Outreach',
+                    'category' => 'Community Outreach',
+                    'schedule' => '[Academic Term Slot: Confirm via CMS]',
+                    'format' => 'School Science Outreach Series',
+                    'location' => 'Partner Secondary Schools [Region Pending]',
+                    'image' => '/images/illustrative/hero-energy-education.jpg',
+                    'summary' => 'Inspiring the next generation of African clean-tech innovators through interactive classroom demonstrations, solar kit experiments, and climate literacy discussions.',
+                    'highlights' => [
+                        'Compact solar demonstration kit labs for science students.',
+                        'Distribution of structured renewable energy study guides.',
+                        'Career pathways talk connecting STEM studies to clean-tech engineering.',
+                    ],
+                ],
+                [
+                    'id' => 'rural-clinic-electrification-briefing',
+                    'title' => 'Primary Healthcare Solar Resilience & Cold-Chain Technical Seminar',
+                    'category' => 'Technical Seminars',
+                    'schedule' => '[Schedule Date & Venue: Confirm via CMS]',
+                    'format' => 'Technical Design Workshop',
+                    'location' => 'Regional Health Coordination Desk [Confirm]',
+                    'image' => '/images/illustrative/campaign-clinic-solar.jpg',
+                    'summary' => 'A specialized seminar equipping health facility administrators and technical partners with sizing methodologies for off-grid clinic maternity wards and vaccine refrigeration.',
+                    'highlights' => [
+                        'Critical medical load separation and battery autonomy calculations.',
+                        'Preventive maintenance scheduling for remote clinic caretakers.',
+                        'Lifecycle cost comparison: diesel generators vs. solar-plus-storage.',
+                    ],
+                ],
+            ],
+
+            'gallery_categories' => [
+                'All Media',
+                'Field Engineering',
+                'Workshops & Education',
+                'Community Impact',
+                'Research & Policy',
+            ],
+
+            'gallery_items' => [
+                [
+                    'id' => 'media-symposium-panel',
+                    'title' => 'Clean Energy Policy Symposium & Engineering Dialogue',
+                    'category' => 'Research & Policy',
+                    'image' => '/images/illustrative/events-energy-conference.jpg',
+                    'caption' => 'Illustrative Documentary Photo — Energy specialists and students exchanging insights at a clean-tech policy forum.',
+                ],
+                [
+                    'id' => 'media-solar-demo',
+                    'title' => 'Live Courtyard Solar PV & Inverter Orientation',
+                    'category' => 'Workshops & Education',
+                    'image' => '/images/illustrative/events-solar-field-demo.jpg',
+                    'caption' => 'Illustrative Documentary Photo — Hands-on demonstration of portable solar generation and inverter operation.',
+                ],
+                [
+                    'id' => 'media-research-desk',
+                    'title' => 'Empirical Solar Irradiance & Literature Review Desk',
+                    'category' => 'Research & Policy',
+                    'image' => '/images/illustrative/publications-research-desk.jpg',
+                    'caption' => 'Illustrative Documentary Photo — Researchers reviewing technical reports and PV demonstration cells.',
+                ],
+                [
+                    'id' => 'media-policy-roundtable',
+                    'title' => 'Multi-Stakeholder Clean Power Planning Briefing',
+                    'category' => 'Research & Policy',
+                    'image' => '/images/illustrative/blog-energy-forum.jpg',
+                    'caption' => 'Illustrative Documentary Photo — Collaborative planning session reviewing regional grid schematics.',
+                ],
+                [
+                    'id' => 'media-microgrid-field',
+                    'title' => 'Community Solar Microgrid Array Inspection',
+                    'category' => 'Field Engineering',
+                    'image' => '/images/illustrative/hero-solar-microgrid.jpg',
+                    'caption' => 'Illustrative Documentary Photo — Decentralized solar photovoltaic array supporting rural resilience.',
+                ],
+                [
+                    'id' => 'media-micro-hydro',
+                    'title' => 'Run-of-River Micro-Hydro Intake & Flow Inspection',
+                    'category' => 'Field Engineering',
+                    'image' => '/images/illustrative/project-micro-hydro.jpg',
+                    'caption' => 'Illustrative Documentary Photo — Technicians assessing river-valley micro-hydro intake infrastructure.',
+                ],
+                [
+                    'id' => 'media-wind-solar-hybrid',
+                    'title' => 'Coastal Meteorological Mast & Solar Hybrid Site',
+                    'category' => 'Field Engineering',
+                    'image' => '/images/illustrative/project-wind-solar-hybrid.jpg',
+                    'caption' => 'Illustrative Documentary Photo — Hybrid wind monitoring and ground-mounted PV testing corridor.',
+                ],
+                [
+                    'id' => 'media-clinic-power',
+                    'title' => 'Solar-Powered Rural Health Clinic Readiness',
+                    'category' => 'Community Impact',
+                    'image' => '/images/illustrative/campaign-clinic-solar.jpg',
+                    'caption' => 'Illustrative Documentary Photo — Reliable solar electricity supporting primary rural healthcare access.',
+                ],
+                [
+                    'id' => 'media-youth-classroom',
+                    'title' => 'Classroom Clean Energy Literacy & Demonstration Lab',
+                    'category' => 'Workshops & Education',
+                    'image' => '/images/illustrative/hero-energy-education.jpg',
+                    'caption' => 'Illustrative Documentary Photo — Engaging students with practical solar energy education.',
+                ],
+            ],
+        ];
+    }
+
+    /**
+     * Data specifically for Page 9: Partners & Careers (/partners-careers).
+     *
+     * @return array<string, mixed>
+     */
+    public static function partnersCareersPageData(): array
+    {
+        return [
+            'header' => [
+                'subtitle' => 'Institutional Partnerships & Talent',
+                'title' => 'Building Alliances & Empowering Africa’s Clean Energy Workforce',
+                'description' => 'Ecowattage collaborates with public ministries, academic institutions, healthcare providers, and clean-tech manufacturers while cultivating engineering, research, and apprenticeship pathways.',
+                'disclaimer' => 'Partnership & Vacancy Notice: Partner logo slots and career tracks below represent CMS-ready templates. Official institutional partner logos and dated job vacancies will be published via the Stage 2 CMS only after formal verification.',
+            ],
+
+            'partnership_tracks' => [
+                [
+                    'number' => '01',
+                    'badge' => 'Public Sector & Policy',
+                    'title' => 'Ministries, Regulators & Municipal Councils',
+                    'desc' => 'Co-developing clean-tech quality standards, predictable import tariff schedules, and district-level public electrification roadmaps.',
+                    'deliverables' => [
+                        'Joint policy briefs and regulatory roundtable dialogues.',
+                        'District energy resource baselines and clinic solar audits.',
+                        'Public energy literacy campaigns across municipal wards.',
+                    ],
+                ],
+                [
+                    'number' => '02',
+                    'badge' => 'Academic & STEM Consortia',
+                    'title' => 'Universities, Technical Colleges & Secondary Schools',
+                    'desc' => 'Connecting classroom physics and electrical engineering programs with empirical solar, wind, and micro-hydro field research.',
+                    'deliverables' => [
+                        'Shared solar irradiance and wind-speed research datasets.',
+                        'Portable solar demonstration kits and curriculum toolkits.',
+                        'Student capstone mentorship and field technician internships.',
+                    ],
+                ],
+                [
+                    'number' => '03',
+                    'badge' => 'Clean-Tech & Manufacturing',
+                    'title' => 'Component OEMs, Testing Labs & Supply Chain Allies',
+                    'desc' => 'Advancing Ecowattage’s phased roadmap toward domestic assembly of surge-tolerant LEDs, solar kits, and LiFePO4 battery modules.',
+                    'deliverables' => [
+                        'Tropical heat, humidity, and voltage-surge component benchmarking.',
+                        'Technology transfer and local technician certification programs.',
+                        'Repairable modular hardware design for West African markets.',
+                    ],
+                ],
+                [
+                    'number' => '04',
+                    'badge' => 'Development & Healthcare NGOs',
+                    'title' => 'Primary Healthcare, Water & Rural Livelihood Organizations',
+                    'desc' => 'Deploying resilient off-grid solar-plus-storage systems for maternity clinics, vaccine cold chains, and agro-processing hubs.',
+                    'deliverables' => [
+                        'Critical medical load sizing and system engineering blueprints.',
+                        'On-site caretaker training and preventive maintenance guides.',
+                        'Transparent post-installation performance monitoring protocols.',
+                    ],
+                ],
+            ],
+
+            'partner_slots' => [
+                [
+                    'sector' => 'Energy & Regulatory Sector',
+                    'label' => '[Official Ministry / Agency Partner Slot]',
+                    'status' => 'Manage via Stage 2 Partner CMS',
+                ],
+                [
+                    'sector' => 'Higher Education & STEM',
+                    'label' => '[University / Technical Institute Slot]',
+                    'status' => 'Manage via Stage 2 Partner CMS',
+                ],
+                [
+                    'sector' => 'Healthcare & Development',
+                    'label' => '[Healthcare / NGO Partner Slot]',
+                    'status' => 'Manage via Stage 2 Partner CMS',
+                ],
+                [
+                    'sector' => 'Clean-Tech Supply Chain',
+                    'label' => '[Hardware / R&D Lab Partner Slot]',
+                    'status' => 'Manage via Stage 2 Partner CMS',
+                ],
+                [
+                    'sector' => 'Community & Youth Network',
+                    'label' => '[Secondary School / Youth Network Slot]',
+                    'status' => 'Manage via Stage 2 Partner CMS',
+                ],
+                [
+                    'sector' => 'Climate & Philanthropy',
+                    'label' => '[Grant / Institutional Sponsor Slot]',
+                    'status' => 'Manage via Stage 2 Partner CMS',
+                ],
+            ],
+
+            'career_categories' => [
+                'All',
+                'Engineering & Technical',
+                'Outreach & Education',
+                'Research & Policy',
+                'Apprenticeship & Volunteer',
+            ],
+
+            'career_tracks' => [
+                [
+                    'id' => 'solar-electrical-systems-engineer',
+                    'title' => 'Renewable Energy & Solar Microgrid Systems Engineer',
+                    'category' => 'Engineering & Technical',
+                    'type' => 'Expression of Interest / Talent Pool',
+                    'location' => 'Freetown & Field Sites, Sierra Leone',
+                    'status' => '[Vacancy Status: Manage via CMS]',
+                    'summary' => 'Lead load-profiling, PV-plus-LiFePO4 sizing, single-line diagram preparation, and field commissioning for community and clinic solar blueprints.',
+                    'requirements' => [
+                        'Background in electrical, renewable energy, or power systems engineering.',
+                        'Hands-on familiarity with off-grid inverters, charge controllers, and DC protection.',
+                        'Commitment to training local community caretakers and youth apprentices.',
+                    ],
+                ],
+                [
+                    'id' => 'clean-tech-led-rd-technician',
+                    'title' => 'Clean-Tech R&D & Electronic Testing Technician',
+                    'category' => 'Engineering & Technical',
+                    'type' => 'Expression of Interest / Talent Pool',
+                    'location' => 'Freetown Innovation Desk',
+                    'status' => '[Vacancy Status: Manage via CMS]',
+                    'summary' => 'Support laboratory benchmarking of high-efficiency LED drivers, surge protection circuits, and modular solar battery packs ahead of local assembly.',
+                    'requirements' => [
+                        'Practical skill with multimeters, oscilloscopes, soldering, and circuit diagnostics.',
+                        'Interest in repairable hardware design suited for tropical grid conditions.',
+                        'Detail-oriented documentation of thermal and voltage stress tests.',
+                    ],
+                ],
+                [
+                    'id' => 'energy-literacy-program-coordinator',
+                    'title' => 'Public Energy Literacy & School Outreach Coordinator',
+                    'category' => 'Outreach & Education',
+                    'type' => 'Expression of Interest / Talent Pool',
+                    'location' => 'Freetown & Regional Partner Schools',
+                    'status' => '[Vacancy Status: Manage via CMS]',
+                    'summary' => 'Organize secondary school STEM demonstrations, community solar workshops, and accessible clean-energy educational campaigns.',
+                    'requirements' => [
+                        'Strong communication and workshop facilitation skills across youth and community groups.',
+                        'Ability to translate technical solar and efficiency concepts into clear lessons.',
+                        'Passion for advancing grassroots renewable energy adoption across West Africa.',
+                    ],
+                ],
+                [
+                    'id' => 'renewable-policy-research-fellow',
+                    'title' => 'Clean Energy Policy & Empirical Research Fellow',
+                    'category' => 'Research & Policy',
+                    'type' => 'Fellowship / Collaborative Track',
+                    'location' => 'Hybrid / Freetown Research Desk',
+                    'status' => '[Vacancy Status: Manage via CMS]',
+                    'summary' => 'Co-author policy briefs, tariff assessments, and rural clinic electrification case studies for Ecowattage’s Knowledge Centre.',
+                    'requirements' => [
+                        'Experience in energy economics, environmental policy, or empirical data analysis.',
+                        'Clear, evidence-based technical writing for ministerial and donor audiences.',
+                        'Dedication to non-fabricated, verifiable African energy metrics.',
+                    ],
+                ],
+                [
+                    'id' => 'youth-solar-installer-apprentice',
+                    'title' => 'Next-Gen Solar Technician & Field Apprentice Cohort',
+                    'category' => 'Apprenticeship & Volunteer',
+                    'type' => 'Vocational Apprenticeship Track',
+                    'location' => 'Community Training Hubs',
+                    'status' => '[Cohort Intake: Manage via CMS]',
+                    'summary' => 'Hands-on vocational pathway for technical graduates and youth learning safe PV mounting, wiring, multimeter diagnostics, and system stewardship.',
+                    'requirements' => [
+                        'Foundational technical school training or strong mechanical/electrical aptitude.',
+                        'Strict adherence to electrical safety and tool stewardship protocols.',
+                        'Eagerness to serve rural and peri-urban electrification initiatives.',
+                    ],
+                ],
+            ],
+        ];
+    }
+
+    /**
+     * Data specifically for Page 10: Contact Us (/contact) modeled on Ecozone Contact layout.
+     *
+     * @return array<string, mixed>
+     */
+    public static function contactPageData(): array
+    {
+        return [
+            'header' => [
+                'subtitle' => 'Connect With Ecowattage',
+                'title' => 'Start a Clean Energy Conversation Across Sierra Leone & Africa',
+                'description' => 'Whether you want to propose a community solar site, request a school energy literacy workshop, collaborate on empirical research, or explore institutional partnerships, our team is ready to connect.',
+                'disclaimer' => 'Contact Verification Notice: Official street coordinates, telephone numbers, and department email aliases below include explicit confirmation markers to prevent fabricated contact records. Final verified details and SMTP/database inbox routing will be managed in Stage 2 CMS.',
+            ],
+
+            'contact_cards' => [
+                [
+                    'icon' => 'location',
+                    'title' => 'Headquarters & Operations',
+                    'primary' => 'Freetown, Sierra Leone',
+                    'secondary' => '[Official Street Address & District Coordinates to Be Supplied]',
+                    'badge' => 'Confirm Street Address',
+                ],
+                [
+                    'icon' => 'phone',
+                    'title' => 'Telephone & Field Line',
+                    'primary' => '+232 [Official Phone Number to Be Supplied]',
+                    'secondary' => 'Direct voice & WhatsApp coordination desk',
+                    'badge' => 'Confirm Phone Line',
+                ],
+                [
+                    'icon' => 'email',
+                    'title' => 'Electronic Mail Desk',
+                    'primary' => 'info@ecowattage.com',
+                    'secondary' => '[Confirm Official Domain & Department Aliases]',
+                    'badge' => 'Confirm Official Email',
+                ],
+                [
+                    'icon' => 'clock',
+                    'title' => 'Office & Field Hours',
+                    'primary' => 'Mon – Fri: 8:30 AM – 5:00 PM (GMT)',
+                    'secondary' => 'Weekend community outreach by scheduled appointment',
+                    'badge' => 'Confirm Office Hours',
+                ],
+            ],
+
+            'inquiry_categories' => [
+                'General Clean Energy Inquiry',
+                'Advocacy Campaign Sponsorship',
+                'Project Blueprint & Site Proposal',
+                'Research & Publications Collaboration',
+                'School Workshop or Speaker Request',
+                'Institutional Partnership or Career Track',
+            ],
+
+            'coordination_desks' => [
+                [
+                    'number' => '01',
+                    'title' => 'Advocacy & Public Literacy Desk',
+                    'focus' => 'School STEM outreach, community solar workshops, and public energy awareness campaigns.',
+                    'route' => 'campaigns',
+                    'cta' => 'Explore Campaigns',
+                ],
+                [
+                    'number' => '02',
+                    'title' => 'Technical Blueprints & R&D Desk',
+                    'focus' => 'Rural clinic solarization, community microgrids, micro-hydro feasibility, and LED/battery testing.',
+                    'route' => 'projects',
+                    'cta' => 'View Project Blueprints',
+                ],
+                [
+                    'number' => '03',
+                    'title' => 'Partnerships, Policy & Talent Desk',
+                    'focus' => 'Ministerial policy briefs, academic research consortia, donor alliances, and engineering fellowships.',
+                    'route' => 'partners-careers',
+                    'cta' => 'Partners & Careers',
+                ],
+            ],
+
+            'faqs' => [
+                [
+                    'question' => 'How can a rural clinic or secondary school request a clean energy assessment or workshop?',
+                    'answer' => 'Select "Project Blueprint & Site Proposal" or "School Workshop or Speaker Request" in the inquiry form on this page, and include your district, facility type, and current power challenges. Our coordination team reviews submissions to plan outreach and feasibility visits.',
+                ],
+                [
+                    'question' => 'Can universities or policy institutes request Ecowattage research briefs and toolkits?',
+                    'answer' => 'Yes. Choose "Research & Publications Collaboration" in the form to request executive briefs, curriculum toolkits, or joint empirical studies with our Knowledge Centre.',
+                ],
+                [
+                    'question' => 'How are messages submitted through this form handled during Stage 1 vs. Stage 2?',
+                    'answer' => 'In Stage 1, the contact form validates your submission and demonstrates the user workflow with instant confirmation feedback. In Stage 2, every inquiry is stored in the CMS database with automated email notifications and status tracking for administrators.',
                 ],
             ],
         ];
