@@ -45,6 +45,10 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function (): v
     // Modular Content (Articles, Publications, Projects, Campaigns, Events)
     Route::get('/posts', [CmsAdminController::class, 'postsIndex'])->name('posts.index');
     Route::post('/posts', [CmsAdminController::class, 'postsStore'])->name('posts.store');
+    Route::get('/posts/{cmsPost}', [CmsAdminController::class, 'postsShow'])->name('posts.show');
+    Route::get('/posts/{cmsPost}/edit', [CmsAdminController::class, 'postsEdit'])->name('posts.edit');
+    Route::put('/posts/{cmsPost}', [CmsAdminController::class, 'postsUpdate'])->name('posts.update');
+    Route::delete('/posts/{cmsPost}', [CmsAdminController::class, 'postsDestroy'])->name('posts.destroy');
     Route::patch('/posts/{cmsPost}/toggle-visibility', [CmsAdminController::class, 'postsToggleVisibility'])->name('posts.toggle-visibility');
 
     // Media Library Manager

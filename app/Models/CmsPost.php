@@ -59,4 +59,21 @@ class CmsPost extends Model
     {
         return $this->belongsTo(User::class, 'created_by');
     }
+
+    /**
+     * Resolve the public URL where this modular content item appears on the frontend.
+     */
+    public function publicUrl(): string
+    {
+        $routeName = match ($this->type) {
+            'article' => 'blog',
+            'publication' => 'publications',
+            'project' => 'projects',
+            'campaign' => 'campaigns',
+            'event' => 'events-gallery',
+            default => 'blog',
+        };
+
+        return route($routeName).'#'.$this->slug;
+    }
 }

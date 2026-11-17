@@ -245,6 +245,60 @@ class CmsSeeder extends Seeder
             );
         }
 
+        // Seed initial Advocacy Campaigns into cms_posts
+        foreach (StageOneData::campaignsPageData()['campaigns_list'] as $campaign) {
+            CmsPost::query()->updateOrCreate(
+                ['slug' => $campaign['id']],
+                [
+                    'type' => 'campaign',
+                    'title' => $campaign['title'],
+                    'category' => $campaign['category'],
+                    'status' => 'published',
+                    'is_visible' => true,
+                    'featured' => false,
+                    'summary' => $campaign['summary'],
+                    'body' => implode("\n\n", $campaign['achievements']),
+                    'featured_image' => $campaign['image'],
+                    'author_name' => 'Ecowattage Advocacy Desk',
+                    'meta_json' => [
+                        'campaign_status' => $campaign['status'],
+                        'milestone_label' => $campaign['milestone_label'],
+                        'progress_percent' => $campaign['progress_percent'],
+                        'target_note' => $campaign['target_note'],
+                        'cta_label' => $campaign['cta_label'],
+                    ],
+                    'published_at' => now(),
+                    'created_by' => $admin->id,
+                ]
+            );
+        }
+
+        // Seed initial Events into cms_posts
+        foreach (StageOneData::eventsGalleryPageData()['events_list'] as $event) {
+            CmsPost::query()->updateOrCreate(
+                ['slug' => $event['id']],
+                [
+                    'type' => 'event',
+                    'title' => $event['title'],
+                    'category' => $event['category'],
+                    'status' => 'published',
+                    'is_visible' => true,
+                    'featured' => false,
+                    'summary' => $event['summary'],
+                    'body' => implode("\n\n", $event['highlights']),
+                    'featured_image' => $event['image'],
+                    'author_name' => 'Ecowattage Events Desk',
+                    'meta_json' => [
+                        'schedule' => $event['schedule'],
+                        'format' => $event['format'],
+                        'location' => $event['location'],
+                    ],
+                    'published_at' => now(),
+                    'created_by' => $admin->id,
+                ]
+            );
+        }
+
         // Seed initial Media Library items
         $mediaFiles = [
             ['file' => '/images/illustrative/hero-solar-microgrid.jpg', 'title' => 'Community Solar Microgrid Array', 'cat' => 'Field Engineering'],

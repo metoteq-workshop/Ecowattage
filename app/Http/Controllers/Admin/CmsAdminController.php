@@ -317,6 +317,98 @@ class CmsAdminController extends Controller
     }
 
     /**
+     * View full details of a modular content item.
+     */
+    public function postsShow(Request $request, CmsPost $cmsPost): View
+    {
+        abort_unless($request->user()?->canManageContent() === true, 403);
+
+        return view('admin.posts.show', [
+            'post' => $cmsPost,
+        ]);
+    }
+
+    /**
+     * Show the edit form for a modular content item.
+     */
+    public function postsEdit(Request $request, CmsPost $cmsPost): View
+    {
+        abort_unless($request->user()?->canManageContent() === true, 403);
+
+        return view('admin.posts.edit', [
+            'post' => $cmsPost,
+        ]);
+    }
+
+    /**
+     * Update an existing modular content item.
+     */
+    public function postsUpdate(Request $request, CmsPost $cmsPost): RedirectResponse
+    {
+        abort_unless($request->user()?->canManageContent() === true, 403);
+
+        $validated = $request->validate([
+            'type' => ['required', 'string', Rule::in(['article', 'publication', 'project', 'campaign', 'event'])],
+            'title' => ['required', 'string', 'max:200'],
+            'slug' => ['required', 'string', 'max:200', Rule::unique('cms_posts', 'slug')->ignore($cmsPost->id)],
+            'category' => ['required', 'string', 'max:120'],
+            'summary' => ['required', 'string', 'max:1000'],
+            'body' => ['nullable', 'string'],
+            'featured_image' => ['nullable', 'string', 'max:255'],
+            'author_name' => ['nullable', 'string', 'max:120'],
+            'status' => ['required', 'string', Rule::in(['draft', 'published'])],
+        ]);
+
+        $cmsPost->update([
+            ...$validated,
+            'slug' => Str::slug($validated['slug']),
+            'is_visible' => $request->boolean('is_visible'),
+            'featured' => $request->boolean('featured'),
+            'published_at' => $validated['status'] === 'published' ? ($cmsPost->published_at ?? now()) : null,
+        ]);
+
+        ActivityLog::record(
+            'post.updated',
+            "Updated {$cmsPost->type} \"{$cmsPost->title}\".",
+            $cmsPost,
+            [
+                'type' => $cmsPost->type,
+                'status' => $cmsPost->status,
+                'is_visible' => $cmsPost->is_visible,
+            ]
+        );
+
+        return redirect()
+            ->route('admin.posts.show', $cmsPost)
+            ->with('cms_notice', ucfirst($cmsPost->type)." \"{$cmsPost->title}\" has been updated.");
+    }
+
+    /**
+     * Delete a modular content item and record an audit log entry.
+     */
+    public function postsDestroy(Request $request, CmsPost $cmsPost): RedirectResponse
+    {
+        abort_unless($request->user()?->canManageContent() === true, 403);
+
+        $title = $cmsPost->title;
+        $type = $cmsPost->type;
+        $postId = $cmsPost->id;
+
+        $cmsPost->delete();
+
+        ActivityLog::record(
+            'post.deleted',
+            "Deleted {$type} \"{$title}\" (#{$postId}).",
+            null,
+            ['deleted_id' => $postId, 'type' => $type, 'title' => $title]
+        );
+
+        return redirect()
+            ->route('admin.posts.index')
+            ->with('cms_notice', ucfirst($type)." \"{$title}\" has been deleted.");
+    }
+
+    /**
      * Hide or unhide a modular content item without deleting it.
      */
     public function postsToggleVisibility(Request $request, CmsPost $cmsPost): RedirectResponse

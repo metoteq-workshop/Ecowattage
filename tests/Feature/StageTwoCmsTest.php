@@ -154,4 +154,69 @@ class StageTwoCmsTest extends TestCase
         $this->assertSame(1, ContactSubmission::query()->where('email', 'ibrahim@example.org')->count());
         $this->assertSame(1, NewsletterSubscriber::query()->where('email', 'researcher@sierra-energy.org')->count());
     }
+
+    public function test_content_module_supports_viewing_editing_and_deleting_items(): void
+    {
+        $this->seed(CmsSeeder::class);
+
+        $admin = User::query()->where('email', 'admin@ecowattage.com')->firstOrFail();
+        $article = CmsPost::query()->where('type', 'article')->firstOrFail();
+
+        // 1. View content item in CMS
+        $this->actingAs($admin)
+            ->get(route('admin.posts.show', $article))
+            ->assertOk()
+            ->assertSee($article->title)
+            ->assertSee('View on Live Website');
+
+        // 2. Open Edit form and update content item
+        $this->actingAs($admin)
+            ->get(route('admin.posts.edit', $article))
+            ->assertOk()
+            ->assertSee('Save Content Changes');
+
+        $this->actingAs($admin)
+            ->put(route('admin.posts.update', $article), [
+                'type' => 'article',
+                'title' => 'Updated Solar Literacy Headline 2026',
+                'slug' => $article->slug,
+                'category' => 'Clean Energy Advocacy',
+                'summary' => 'Updated summary for the solar literacy article.',
+                'body' => "First updated paragraph.\n\nSecond updated paragraph.",
+                'featured_image' => $article->featured_image,
+                'author_name' => 'Ecowattage Editorial Desk',
+                'status' => 'published',
+                'is_visible' => '1',
+                'featured' => '1',
+            ])
+            ->assertRedirect(route('admin.posts.show', $article));
+
+        $this->assertDatabaseHas('cms_posts', [
+            'id' => $article->id,
+            'title' => 'Updated Solar Literacy Headline 2026',
+        ]);
+
+        // Public blog page reflects the updated title
+        $this->get(route('blog'))
+            ->assertOk()
+            ->assertSee('Updated Solar Literacy Headline 2026');
+
+        // 3. Delete content item
+        $deletedId = $article->id;
+        $this->actingAs($admin)
+            ->delete(route('admin.posts.destroy', $article))
+            ->assertRedirect(route('admin.posts.index'));
+
+        $this->assertDatabaseMissing('cms_posts', [
+            'id' => $deletedId,
+        ]);
+
+        $this->assertDatabaseHas('activity_logs', [
+            'action' => 'post.updated',
+            'auditable_id' => $deletedId,
+        ]);
+        $this->assertDatabaseHas('activity_logs', [
+            'action' => 'post.deleted',
+        ]);
+    }
 }

@@ -71,7 +71,7 @@ class PublicPageController extends Controller
         return view('pages.campaigns', [
             'site' => StageOneData::siteConfig(),
             'navigation' => CmsContentService::navigation(),
-            'campaignsData' => StageOneData::campaignsPageData(),
+            'campaignsData' => CmsContentService::campaignsPageData(),
             'funfacts' => StageOneData::homePageData()['funfacts'],
         ]);
     }
@@ -86,7 +86,7 @@ class PublicPageController extends Controller
         return view('pages.projects', [
             'site' => StageOneData::siteConfig(),
             'navigation' => CmsContentService::navigation(),
-            'projectsData' => StageOneData::projectsPageData(),
+            'projectsData' => CmsContentService::projectsPageData(),
             'funfacts' => StageOneData::homePageData()['funfacts'],
         ]);
     }
@@ -101,7 +101,7 @@ class PublicPageController extends Controller
         return view('pages.blog', [
             'site' => StageOneData::siteConfig(),
             'navigation' => CmsContentService::navigation(),
-            'blogData' => StageOneData::blogPageData(),
+            'blogData' => CmsContentService::blogPageData(),
         ]);
     }
 
@@ -115,7 +115,7 @@ class PublicPageController extends Controller
         return view('pages.publications', [
             'site' => StageOneData::siteConfig(),
             'navigation' => CmsContentService::navigation(),
-            'publicationsData' => StageOneData::publicationsPageData(),
+            'publicationsData' => CmsContentService::publicationsPageData(),
         ]);
     }
 
@@ -129,7 +129,7 @@ class PublicPageController extends Controller
         return view('pages.events-gallery', [
             'site' => StageOneData::siteConfig(),
             'navigation' => CmsContentService::navigation(),
-            'eventsData' => StageOneData::eventsGalleryPageData(),
+            'eventsData' => CmsContentService::eventsGalleryPageData(),
         ]);
     }
 
